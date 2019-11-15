@@ -1,6 +1,10 @@
 const mongoose= require('mongoose')
 
 const ProfileSchema= mongoose.Schema({
+ client:{
+  type:mongoose.Schema.Types.ObjectId,
+  ref:'client'
+ },
 dirreccion:{
  type:String,
  required:true
