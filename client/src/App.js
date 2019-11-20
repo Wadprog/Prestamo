@@ -1,6 +1,8 @@
 import React from 'react'
 import Navbar from './component/Navbar'
-import { Switch } from 'react-router-dom'
+import Home from './pages/Home'
+import Clients from './pages/Clients'
+import { Switch, Route} from 'react-router-dom'
 import './App.css'
 
 function App() {
@@ -9,6 +11,12 @@ function App() {
     <Fragment>
       <main className="bg-main">
         <Navbar />
+        <div className="container-fluid mt-2">
+        <Switch>
+        <Route exact path="/" component={Home}/>
+        <Route exat path='/Clients'component={Clients}/>
+      </Switch>  
+      </div>
       </main>
     </Fragment>
   )
