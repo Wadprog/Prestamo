@@ -1,44 +1,50 @@
-root{
-  --Navcolor:#1B121D;
+root {
+	--Navcolor: #1b121d;
 }
-.bg-navColor{
-  background-color: #1B121D;
+.Logo{
+	width: 75px;
+	height: 50px;
+	background:white;
 }
-.bg-logo{
-  background-color: #221725;
+.bg-navColor {
+	background-color: #1b121d;
 }
-.bg-main{
-  background: rgb(2,0,36);
-  background: linear-gradient(14deg, rgba(2,0,36,1) 8%, rgba(105,105,105,1) 100%, rgba(13,13,13,1) 100%);
-  background-color: #696969;
+.bg-logo {
+	background-color: #221725;
 }
-main{
-  height: 100vh;
-  width:100vw;
+.bg-main {
+	background: rgb(2, 0, 36);
+	background: linear-gradient(14deg, rgba(2, 0, 36, 1) 8%, rgba(105, 105, 105, 1) 100%, rgba(13, 13, 13, 1) 100%);
+	background-color: #696969;
 }
-.link-actived{
-  border-bottom: 3px solid white;
+main {
+	height: 100vh;
+	width: 100vw;
+	background: red;
+}
+.link-actived {
+	border-bottom: 3px solid white;
 }
 .App {
-  text-align: center;
-  background-color: #1B121D;
+	text-align: center;
+	background-color: #1b121d;
 }
 
 .App-logo {
-  height: 40vmin;
+	height: 40vmin;
 }
 
 .App-header {
-  background-color: #1B121D;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #1b121d;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
 .App-link {
-  color: #09d3ac;
+	color: #09d3ac;
 }
