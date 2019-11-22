@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = props => {
-	const { Fragment } = React;
+	
 	return (
 		<nav className=" fixed-bottom navbar navbar-dark bg-navColor">
 			<div className="container">
@@ -19,7 +19,7 @@ const Footer = props => {
 							<li className="list-group-item d-flex justify-content-between align-items-center ">
 								<Link className="text-dark" to="loan">
 									<i className="fa fa-bell text-black" />
-									<span class="badge badge-primary badge-pill">14</span>
+									<span className="badge badge-primary badge-pill">14</span>
 								</Link>
 							</li>
 						</ul>

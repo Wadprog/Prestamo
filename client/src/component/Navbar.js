@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import Logo from '../Img/Logo.png';
 
 const Navbar = props => {
-	const { Fragment } = React;
+	
 	return (
 		<nav className="navbar navbar-expand-md navbar-dark bg-navColor">
 			<div className="container">
 				<Link className="navbar-brand bg-logo px-5" to="/">
-					<img className="Logo" src={Logo} />
+					<img className="Logo" alt="Logo" src={Logo} />
 				</Link>
 				<button
 					className="navbar-toggler"

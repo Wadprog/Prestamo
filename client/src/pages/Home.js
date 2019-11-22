@@ -1,5 +1,4 @@
 import React from 'react';
-import InfoCard from '../component/InfoCards';
 import CardContainer from '../component/CardContainer';
 import cards from '../Temp/cards';
 const Home = props => {
