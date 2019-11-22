@@ -2,14 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = props => {
-	
 	return (
-		<nav className=" fixed-bottom navbar navbar-dark bg-navColor">
+		<div className=" fixed-bottom  bg-navColor">
 			<div className="container">
 				<div className="row">
-					
-					<div className="col ">
-						<ul className="w-100 list-group list-group-horizontal ml-auto justify-content-end">
+					<div className="w-100">
+						<ul className="w-100 mr-0 d-flex list-group list-group-horizontal ml-auto justify-content-end">
 							<li className="list-group-item d-flex justify-content-between align-items-center  ">
 								<Link className="text-dark" to="/">
 									<i className="fa fa-user text-black" />
@@ -26,7 +24,7 @@ const Footer = props => {
 					</div>
 				</div>
 			</div>
-		</nav>
+		</div>
 	);
 };
 export default Footer;
