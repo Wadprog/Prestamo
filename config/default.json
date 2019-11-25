@@ -1,0 +1,3 @@
+{
+" mongoURI":"mongodb+srv://Almonte:<Password>@cluster0-tdnol.mongodb.net/test?retryWrites=true&w=majority"
+}
