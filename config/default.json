@@ -1,3 +1,4 @@
 {
-" mongoURI":"mongodb+srv://Almonte:<Password>@cluster0-tdnol.mongodb.net/test?retryWrites=true&w=majority"
+"mongoURI":"mongodb+srv://Almonte:Poupouy12@cluster0-tdnol.mongodb.net/test?retryWrites=true&w=majority",
+"jwtSecret":"My big secret"
 }

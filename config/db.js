@@ -1,13 +1,19 @@
 const mongoose = require('mongoose');
-
-const connectDb = () => {
-	mongoose
-		.connect('mongodb+srv://Almonte:Poupouy12@cluster0-tdnol.mongodb.net/test?retryWrites=true&w=majority', {
+const config = require('config');
+const db = config.get('mongoURI');
+const connectDb = async () => {
+	try {
+		await mongoose.connect(db, {
 			useUnifiedTopology: true,
 			useNewUrlParser: true
-		})
-		.then(() => console.log('Connected from Server.js'))
-		.catch(err => console.log(`Db connection fails error details: ${err}`));
+		});
+		console.log(`Mongo connected with success`);
+	} catch (error) {
+		console.log(`Failled to connect to the dataBase ${error}`);
+		//Exit process with failluer
+		process.exit(1);
+	}
+	
 };
 
 module.exports = connectDb;
