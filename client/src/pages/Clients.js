@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Clientes from '../component/Clients';
 const Clients = props => {
-	const [ items, setItems ] = useState([]);
+	
+const [ items, setItems ] = useState([]);
 	const [ filteredClients, setFilteredClients ] = useState([]);
 	const [ err, setErr ] = useState(false);
 	useEffect(() => {
@@ -24,7 +25,10 @@ const Clients = props => {
 		let filter = items.filter(item => !item.name.toLowerCase().indexOf(e.target.value.toLowerCase()));
 		setFilteredClients(filter);
 	};
+
+
 	const { Fragment } = React;
+	
 	return (
 		<Fragment>
 			{!err ? (

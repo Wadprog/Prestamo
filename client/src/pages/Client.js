@@ -1,6 +1,7 @@
 import React from 'react';
 const Client = props => {
 	const { id } = props.match.params;
+	
 	const { Fragment } = React;
 	return (
 		<Fragment>
