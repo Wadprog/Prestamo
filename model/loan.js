@@ -1,42 +1,43 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const LoanSchema= mongoose.Schema({
+const LoanSchema = mongoose.Schema({
+	client: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'profile'
+	},
+	amount: {
+		type: Number,
+		required: true
+	},
+	plan: {
+		type: String
+	},
+	paidStatus: {
+		type: Boolean,
+		default: false
+	},
+	dues: [
+		{
+			date: {
+				type: Date,
+				default: Date.now
+			},
+			amount: {
+				type: Number,
+				required: true
+			},
+			collector: {
+				type: String
+			}
+		}
+	],
 
- client:{
-  type:mongoose.Schema.Types.ObjectId,
-  ref:'client'
- },
- value:{
-  type:Number,
-  required:true
- },
- plan:{
-  type:Number
- },
- payments:[{
-  date:{
-   type:Date,
-   required:true
-}, 
-amount:{
- type:Number,
- required:true
-},
-collector:{
-type:String
-}
- }],
+	
 
- status:{
-  type:Boolean,
-  required:true,
-  default:false
- },
+	date: {
+		type: Date,
+		default: Date.now
+	}
+});
 
- date:{
-  type:Date,
-  default:Date.now
- }
-})
-
-module.exports =Loan= mongoose.Model('loan', LoanSchema)
+module.exports = Loan = mongoose.model('loan', LoanSchema);

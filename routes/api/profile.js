@@ -91,43 +91,8 @@ router.get('/:id', auth, async (req, res) => {
   }
 })
 
-//@route post api/profiles/
-//@desc add a loan to a client
-// @access private
 
-router.post('/addloan/:id', async (req, res) => {
-  try {
-    let profile = await Profile.findById(req.params.id)
-    if (!profile) return res.status(404).json({ msg: 'cliente no existe' })
-    const { amount, plan, paidStatus } = req.body
-    profile.loans.push({
-      amount,
-      plan,
-      paidStatus
-    })
-    await profile.save()
-    res.json(profile)
-  } catch (error) {
-    console.log(`server error ${error}`)
-    return res.status(500).json({ msg: 'server error' + error.message })
-  }
-})
-//@route post api/profiles/
-//@desc add a loan to a client
-// @access private
-router.post('/payloan/:clientid/:loanid', async (req, res) => {
-  try {
-    const { clientid, loanid } = req.params
-    let profile = await Profile.findById(clientid)
-	if (!profile) return res.status(404).json({ mgs: 'cliente no exuate' })
-	//get the loan
-	let loan= profile.loans.filter(loan=>!loan.id!=loanid)
-	const {amount}=req.body
-	loan.dues.push({amount});
-	return res.json({loan})
-  } catch (error) {
-	  return res.status(500).json({msg:"server error"+ error})
-  }
-})
+
+
 
 module.exports = router

@@ -29,37 +29,7 @@ const ProfileSchema = mongoose.Schema({
 		type: Date,
 		default: Date.now
 	},
-	loans: [
-		{
-			amount: {
-				type: Number,
-				required: true
-			},
-			plan: {
-				type: String,
-				required: true
-			},
-			paidStatus: {
-				type: Boolean,
-				default: false
-			},
-			dues:[{
-				amount:{
-					type:Number,
-					required:true
-				},
-				date:{
-					type:Date,
-					default:Date.now
-
-				}
-			}],
-			date: {
-				type: Date,
-				default: Date.now
-			}
-		}
-	]
+	
 });
 
 module.exports = Profile = mongoose.model('profile', ProfileSchema);

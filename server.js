@@ -13,7 +13,7 @@ connectDb();
 app.use('/api/user',require('./routes/api/User'))
 app.use('/api/client',require('./routes/api/client'))
 app.use('/api/profile',require('./routes/api/Profile'))
-app.use('/api/loans',require('./routes/api/loans'))
+app.use('/api/loan',require('./routes/api/Loan'))
 app.use('/api/auth',require('./routes/api/auth'))
 
 
