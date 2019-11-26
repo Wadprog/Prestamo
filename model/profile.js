@@ -43,6 +43,17 @@ const ProfileSchema = mongoose.Schema({
 				type: Boolean,
 				default: false
 			},
+			dues:[{
+				amount:{
+					type:Number,
+					required:true
+				},
+				date:{
+					type:Date,
+					default:Date.now
+
+				}
+			}],
 			date: {
 				type: Date,
 				default: Date.now
