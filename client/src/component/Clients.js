@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { setAlert } from '../redux/actions/alert'
+import PropTypes from 'prop-types';
 const Clients = props => {
   const { clients, handleChange } = props
   return (
@@ -83,7 +84,7 @@ const Clients = props => {
 				<h4 className="text-white text-center">
                 <i className="fa fa-bug text-danger" />
                 <i> No hay cliente con ese criterio.</i>
-				{props.setAlert('password match ', 'danger')}
+				{props.setAlert('No hay cliente con esta caracteristica ', 'warning',1000)}
               </h4>
               
             )}
@@ -92,5 +93,8 @@ const Clients = props => {
       </div>
     </div>
   )
+}
+Clients.propTypes={
+	setAlert:PropTypes.func.isRequired
 }
 export default connect(null, { setAlert })(Clients)

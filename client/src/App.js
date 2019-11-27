@@ -4,6 +4,9 @@ import Footer from './component/Footer';
 import Home from './pages/Home';
 import Clients from './pages/Clients';
 import Client from './pages/Client';
+import Alert from './component/Alert'
+import Login from './pages/Login'
+import Register from './pages/Register'
 import { Switch, Route } from 'react-router-dom';
 import './App.css';
 
@@ -17,10 +20,13 @@ function App() {
 				<main>
 					<Navbar />
 					<div className="container-fluid mt-2">
+						<Alert/>
 						<Switch>
 							<Route exact path="/" component={Home} />
 							<Route exact path="/clients" component={Clients} />
 							<Route path="/client/:id" component={Client} />
+							<Route path="/login" component={Login} />
+							<Route path="/register" component={Register} />
 						</Switch>
 					</div>
 					<Footer />
