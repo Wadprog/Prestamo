@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { setAlert } from '../redux/actions/alert'
 import PropTypes from 'prop-types';
 const Clients = props => {
-  const { clients, handleChange } = props
+  const { profiles, handleChange } = props
   return (
     <div className="container-fluid">
       <div className="my-4 py-4">
@@ -42,7 +42,7 @@ const Clients = props => {
             </div>
           </div>
           <div className="bg-transparent">
-            {clients.length > 0 ? (
+            {profiles.length > 0 ? (
               <table className="my-0 table table-bordered">
                 <thead className="thead-dark">
                   <tr>
@@ -55,12 +55,12 @@ const Clients = props => {
                   </tr>
                 </thead>
                 <tbody className="bg-white">
-                  {clients.map(client => (
+                  {profiles.map(client => (
                     <tr key={client.id}>
                       <td>{client.name}</td>
                       <td>9999999-9</td>
-                      <td>{client.address.street}</td>
-                      <td>{client.address.suite}</td>
+                      <td>{client.address}</td>
+                      <td>{client.address}</td>
                       <td>{client.phone}</td>
                       <td>
                         <Link
@@ -94,7 +94,10 @@ const Clients = props => {
     </div>
   )
 }
-Clients.propTypes={
-	setAlert:PropTypes.func.isRequired
+Clients.propTypes = {
+  profiles: PropTypes.array.isRequired
 }
-export default connect(null, { setAlert })(Clients)
+const mapStateToProps = state => ({
+  profiles: state.profile.filteredProfiles,
+})
+export default connect(mapStateToProps, { setAlert })(Clients)
