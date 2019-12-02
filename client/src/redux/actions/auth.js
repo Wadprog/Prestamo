@@ -3,10 +3,19 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   USER_LOADED,
-  AUTH_ERROR
+  AUTH_ERROR,
+  LOG_OUT
 } from './Const'
 import { setAlert } from './alert'
 import setAuthToken from '../../utils/setAuthToken'
+export const logout=()=> async dispatch=>{
+dispatch({
+  type:LOG_OUT
+})
+}
+export const login=({name, password})=> async dispatch=>{
+
+}
 //register user
 export const loadUser = () => async dispatch => {
   if (localStorage.token) setAuthToken(localStorage.token);

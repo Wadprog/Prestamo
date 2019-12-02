@@ -17,7 +17,7 @@ import { Provider } from 'react-redux'
 import store from './redux/store'
 function App() {
   useEffect(()=>{
-    
+    store.dispatch(loadUser())
     store.dispatch(loadProfiles())
   }, [])
   
@@ -28,7 +28,7 @@ function App() {
       <Fragment>
         <main>
           <Navbar />
-          <div className="container-fluid mt-2">
+          <div className=" mt-2">
             <Alert />
             <Switch>
               <Route exact path="/" component={Home} />
