@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Loan from '../component/Loan'
+import Accordion from '../component/Accordion'
 const Client = props => {
   const { id } = props.match.params
   const { Fragment } = React
@@ -59,8 +60,9 @@ const Client = props => {
         <h6 className="text-white mt-5 mb-2">Lista de prestamos pagados </h6>
 		
 	    <ul class="list-group mb-5 ">
-          <li className="list-group-item mb-1"><Loan/></li>
-          <li className="list-group-item mb-1">Dapibus ac facilisis in</li>
+          
+          <li className="list-group-item mb-1 p-0"><Accordion/></li>
+          <li className="list-group-item mb-1 p-0"><Accordion/></li>
           <li className="list-group-item mb-1">Morbi leo risus</li>
           <li className="list-group-item mb-1">Porta ac consectetur ac</li>
           <li className="list-group-item mb-1">Vestibulum at eros</li>
