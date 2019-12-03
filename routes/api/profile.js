@@ -12,7 +12,7 @@ const { check, validationResult } = require('express-validator')
 //@route Get api/profiles/
 //@desc Get  all  profiles
 // @access private
-router.get('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const profiles = await Profile.find()
     return res.json(profiles)

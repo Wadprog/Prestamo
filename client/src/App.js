@@ -9,6 +9,8 @@ import Test from './component/Test'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import { Switch, Route } from 'react-router-dom'
+
+import PrivateRoute from './component/PrivateRoute'
 import './App.css'
 import {loadProfiles} from './redux/actions/profile'
 import setAuthToken from './utils/setAuthToken'
@@ -31,12 +33,12 @@ function App() {
           <div className=" mt-2">
             <Alert />
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/clients" component={Clients} />
-              <Route path="/client/:id" component={Client} />
+              <PrivateRoute exact path="/" component={Home} />
+              <PrivateRoute exact path="/clients" component={Clients} />
+              <PrivateRoute path="/client/:id" component={Client} />
               <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
-              <Route path="/test" component={Test} />
+              <PrivateRoute path="/register" component={Register} />
+              <PrivateRoute path="/test" component={Test} />
             </Switch>
           </div>
           <Footer />

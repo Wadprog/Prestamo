@@ -24,7 +24,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
         </Link>
       </li>
       <li className="nav-item">
-        <a onClick={logout}className="nav-link" href="!#">
+        <a onClick={logout} className="nav-link" href="/login">
           <i className="fa fa-sign-out"></i>
           <span className="d-sm-none">Sign Out</span>
           Sign Out
@@ -35,7 +35,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
   const guessLink = (
     <ul className="navbar-nav ml-auto ">
       <li className="nav-item">
-        <Link className="nav-link" to="loan">
+        <Link className="nav-link" to="/login">
           <i className="fa fa-sign-out"></i>
           <span className="d-sm-none">Sign in</span>
           Sign in

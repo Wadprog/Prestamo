@@ -61,6 +61,7 @@ const Clients = ({ profiles, profilesFiltered, filterProfiles }) => {
                     <th scope="col">Nombre</th>
                     <th scope="col">Cedula</th>
                     <th scope="col">Domicilio</th>
+                 
                     <th scope="col"> Ref Dirreccion</th>
                     <th scope="col">Telefono</th>
                     <th scope="col">Actiones</th>
@@ -72,7 +73,7 @@ const Clients = ({ profiles, profilesFiltered, filterProfiles }) => {
                       <td>{client.name}</td>
                       <td>{client.cedula}</td>
                       <td>{client.address}</td>
-                      <td>{client.address}</td>
+                      <td>{client.addressRef}</td>
                       <td>{client.tel}</td>
                       <td>
                         <Link

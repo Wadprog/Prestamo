@@ -3,7 +3,9 @@ import {
   REGISTER_FAIL,
   USER_LOADED,
   AUTH_ERROR,
-  LOG_OUT
+  LOG_OUT,
+  LOG_IN_SUCCESS,
+  LOG_IN_FAIL
 } from '../actions/Const'
 const initialState = {
   token: localStorage.getItem('token'),
@@ -23,6 +25,7 @@ export default function(state = initialState, action) {
         user: payload
       }
     case REGISTER_SUCCESS:
+    case LOG_IN_SUCCESS:
       localStorage.setItem('token', payload.token)
       return {
         ...state,
@@ -33,6 +36,7 @@ export default function(state = initialState, action) {
     case REGISTER_FAIL:
     case AUTH_ERROR:
     case LOG_OUT:
+    case LOG_IN_FAIL:
       localStorage.removeItem('token')
       return {
         ...state,

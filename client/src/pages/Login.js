@@ -4,15 +4,16 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { login } from '../redux/actions/auth'
 
-const LOGIN = ({ isAuthenticated }) => {
+const LOGIN = ({ isAuthenticated ,login}) => {
   const [formData, setFormData] = useState({
-    email: '',
+    name: '',
     password: ''
   })
-  const onSubmit = () => {
-    const { email, password } = formData
-
-    login({ email, password })
+  const onSubmit = e => {
+    e.preventDefault()
+    const { name, password } = formData
+ 
+    login({ name, password })
   }
   const onchange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -32,8 +33,8 @@ const LOGIN = ({ isAuthenticated }) => {
               <div className="form-group">
                 <label htmlfor="exampleInputEmail1">Email address</label>
                 <input
-                  name="email"
-                  type="email"
+                  name="name"
+                  type="text"
                   className="form-control"
                   placeholder="Enter nombre"
                   required
