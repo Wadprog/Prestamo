@@ -13,12 +13,8 @@ const Loan = require('../../model/Loan');
 
 router.post('/', async (req, res) => {
 	try {
-		const { client, amount, plan } = req.body;
-		let loan = new Loan({
-			client,
-			amount,
-			plan
-		});
+		
+		let loan = new Loan(req.body);
 		await loan.save();
 		return res.json(loan);
 	} catch (error) {
