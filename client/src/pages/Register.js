@@ -14,7 +14,7 @@ const Register = ({ setAlert, register }) => {
 
   const onSubmit = e => {
     e.preventDefault()
-    if (password != password2)
+    if (password !== password2)
       setAlert('Las contrasenas no son iguales', 'danger')
     register({name, password})
   }

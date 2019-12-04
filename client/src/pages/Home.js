@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import CardContainer from '../component/CardContainer'
 import cards from '../Temp/cards'
 const Home = props => {
-  const { Fragment } = React
+
   const [sideOpen, setSideOpen]= useState(false)
  const handleSide=()=>{
 	setSideOpen(!sideOpen)

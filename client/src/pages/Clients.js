@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { filterProfiles } from '../redux/actions/profile'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
