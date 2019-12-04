@@ -50,7 +50,7 @@
   }
 
   .Accordion-open-btn:hover i{
-    color:white;
+    color:grey;
     transform: scale(1,1.5);
     animation: up-down .8s infinite linear;
 }

@@ -5,7 +5,6 @@ import {
   PROFILE_FETCH_FAIL,
   FILTER
 } from './Const'
-import { dispatch } from 'rxjs/internal/observable/pairs'
 export const filterProfiles = (value, profiles) => async dispatch => {
   let filter = profiles.filter(
     item =>

@@ -33,8 +33,8 @@ class Accordion extends Component {
   }
 
   nextPayment() {
-    const { paidStatus, dues} = this.props
-    if (paidStatus) return `Ultimo pago: ${dues[dues.length-1].date}`
+    const { paidStatus, dues } = this.props
+    if (paidStatus) return `Ultimo pago: ${dues[dues.length - 1].date}`
     return `Calculando...`
   }
   handleOpen(evt) {
@@ -88,12 +88,14 @@ class Accordion extends Component {
                   <tbody>
                     {dues.map(due => (
                       <tr key={due.id}>
-                        <th><del>{due.date}</del></th>
-                        <td><del>{due.amount}</del></td>
+                        <th>
+                          <del>{due.date}</del>
+                        </th>
                         <td>
-                          {due.collector != ''
-                            ? due.collector
-                            : 'No Espificado'}
+                          <del>{due.amount}</del>
+                        </td>
+                        <td>
+                          {!due.collector ? 'No Espificado' : due.collector}
                         </td>
                       </tr>
                     ))}

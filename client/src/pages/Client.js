@@ -3,21 +3,32 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Loan from '../component/Loan'
 import Accordion from '../component/Accordion'
-const Client = props => {
-  const { id } = props.match.params
+
+const Client = ({
+  profiles,
+  loans,
+  match: {
+    params: { id }
+  }
+}) => {
   const { Fragment } = React
-  const { profiles } = props
+
   let client = {}
   for (var i = 0; i < profiles.length; i++) {
-    if (profiles[i]._id == id) {
-      client = profiles[i]
-    }
+    if (profiles[i]._id == id) client = profiles[i]
   }
-  profiles.map(profile => {
-    console.log(profile)
-    if (id == profile._id) return profile
-  })
-  console.log(`all ${profiles} and client ${client[0]}`)
+
+  let c = profiles.filter(profile => profile._id == id)
+  let { f } = c
+  console.log('Here is f' + f.name)
+  let uLoan = [...loans]
+
+  let userLoans = []
+  for (var i = 0; i < uLoan.length; i++) {
+    if (uLoan[i]._id == id) userLoans.push(uLoan[i])
+  }
+  // let userLoans = loans.filter(loan=> !loan._id==id)
+
   return (
     <Fragment>
       <div className="container pt-5">
@@ -51,32 +62,36 @@ const Client = props => {
             </div>
           </div>
         </div>
-		<h6 className="text-white mt-4">Prestamo Activo</h6>
+        <h6 className="text-white mt-4">Prestamo Activo</h6>
 
-		<ul class="list-group mb-5 ">
-		<li className="list-group-item mb-1 bg-info">Dapibus ac facilisis in</li>
-       </ul>
-
-        <h6 className="text-white mt-5 mb-2">Lista de prestamos pagados </h6>
-		
-	    <ul class="list-group mb-5 ">
-          
-          <li className="list-group-item mb-1 p-0"><Accordion/></li>
-          <li className="list-group-item mb-1 p-0"><Accordion/></li>
-          <li className="list-group-item mb-1">Morbi leo risus</li>
-          <li className="list-group-item mb-1">Porta ac consectetur ac</li>
-          <li className="list-group-item mb-1">Vestibulum at eros</li>
+        <ul class="list-group mb-5 ">
+          <li className="list-group-item mb-1 bg-info">
+            Dapibus ac facilisis in
+          </li>
         </ul>
 
+        <h6 className="text-white mt-5 mb-2">Lista de prestamos pagados </h6>
+
+        {uLoan.length > 0 && (
+          <ul class="list-group mb-5 ">
+            {uLoan.map(loan => (
+              <li className="list-group-item mb-1 p-0">
+                <Accordion {...loan} />
+              </li>
+            ))}
+          </ul>
+        )}
         <h6 className="text-withe">Informaciones de contacto</h6>
       </div>
     </Fragment>
   )
 }
 Client.prototype = {
-  profiles: PropTypes.array.isRequired
+  profiles: PropTypes.array.isRequired,
+  loans: PropTypes.array.isRequired
 }
 const mapStateToProps = state => ({
-  profiles: state.profile.profiles
+  profiles: state.profile.profiles,
+  loans: state.loan.loans
 })
 export default connect(mapStateToProps)(Client)
