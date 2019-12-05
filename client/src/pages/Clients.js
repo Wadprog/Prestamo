@@ -1,8 +1,9 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { filterProfiles } from '../redux/actions/profile'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import ModifyProfile from '../component/Modals/ModifyProfile'
 
 const Clients = ({ profiles, profilesFiltered, filterProfiles }) => {
 
@@ -15,9 +16,27 @@ const Clients = ({ profiles, profilesFiltered, filterProfiles }) => {
 
   const { Fragment } = React
 
+  const [pageState, setPageState] = useState({
+    modifyProfile: false,
+    newPayment: false,
+    newLoan: false,
+    id:""
+  })
+  const {id, modifyProfile, newPayment, newLoan } = pageState
+
+  const openModal = e => {
+    
+   
+    console.log(id)
+    setPageState({ ...pageState, [e.target.name]: true,id:e.target.id })
+  }
+  const closeModals = () => {
+    setPageState({ modifyProfile: false, newPayment: false, newLoan: false })
+  }
+
   return (
-    <Fragment>
-     
+    <div className="container-fluid">
+     {modifyProfile && <ModifyProfile id={id} closeModals={closeModals} />}
     <div className="container-fluid">
       <div className="my-4 py-4">
         <div className="row mb-0">
@@ -82,12 +101,14 @@ const Clients = ({ profiles, profilesFiltered, filterProfiles }) => {
                         >
                           Ver
                         </Link>
-                        <Link
-                          to={`/edit_client/${client.id}`}
+                        <button
+                        name="modifyProfile"
+                          id={client._id}
+                          onClick={openModal}
                           className="btn btn-sm btn-outline-warning"
                         >
                           Modificar
-                        </Link>
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -105,7 +126,7 @@ const Clients = ({ profiles, profilesFiltered, filterProfiles }) => {
         </div>
       </div>
     </div>
-    </Fragment>
+    </div>
   )
 }
 Clients.propTypes = {
