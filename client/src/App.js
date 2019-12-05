@@ -7,6 +7,7 @@ import Client from './pages/Client';
 import Alert from './component/Alert';
 import Test from './component/Test';
 import Login from './pages/Login';
+import Loading from './component/layout/Loading'
 import Register from './pages/Register';
 
 //Routing ..
@@ -44,6 +45,7 @@ function App() {
 							<PrivateRoute exact path="/clients" component={Clients} />
 							<PrivateRoute path="/client/:id" component={Client} />
 							<Route path="/login" component={Login} />
+							<Route path="/load" component={Loading} />
 							<PrivateRoute path="/register" component={Register} />
 							<PrivateRoute path="/test" component={Test} />
 						</Switch>
