@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import './Modal.css'
 
 const ModifyProfile = ({ /*update,*/ closeModals,profiles, id }) => {
-  const { Fragment } = React
+ 
   // get the right profile.
   const [client] = profiles.filter(profile => profile._id == id)
   const [formData, setFormData] = useState({ ...client })

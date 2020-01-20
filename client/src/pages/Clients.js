@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import ModifyProfile from '../component/Modals/ModifyProfile'
 
+
 const Clients = ({ profiles, profilesFiltered, filterProfiles }) => {
 
 
@@ -14,7 +15,6 @@ const Clients = ({ profiles, profilesFiltered, filterProfiles }) => {
     filterProfiles(e.target.value.toLowerCase(), profiles)
   }
 
-  const { Fragment } = React
 
   const [pageState, setPageState] = useState({
     modifyProfile: false,
@@ -22,21 +22,21 @@ const Clients = ({ profiles, profilesFiltered, filterProfiles }) => {
     newLoan: false,
     id:""
   })
-  const {id, modifyProfile, newPayment, newLoan } = pageState
+  const {id, modifyProfile, newPayment, newLoan} = pageState
 
   const openModal = e => {
     
-   
     console.log(id)
     setPageState({ ...pageState, [e.target.name]: true,id:e.target.id })
   }
   const closeModals = () => {
-    setPageState({ modifyProfile: false, newPayment: false, newLoan: false })
+    setPageState({ modifyProfile: false, newPayment: false, newLoan: false ,newClient:false})
   }
 
   return (
     <div className="container-fluid">
      {modifyProfile && <ModifyProfile id={id} closeModals={closeModals} />}
+     
     <div className="container-fluid">
       <div className="my-4 py-4">
         <div className="row mb-0">
@@ -64,7 +64,7 @@ const Clients = ({ profiles, profilesFiltered, filterProfiles }) => {
               <h4 className="text-muted">Lista de clientes</h4>
               <span className="ml-auto">
                 <Link
-                  to="/create_client"
+                  to="/newClient"
                   className="btn btn-sm btn-outline-info"
                 >
                   Crear nuevo client

@@ -10,6 +10,8 @@ import Login from './pages/Login';
 import Loading from './component/layout/Loading'
 import Register from './pages/Register';
 
+import NewClient from './pages/NewClient'
+
 //Routing ..
 
 import { Switch, Route } from 'react-router-dom';
@@ -46,6 +48,7 @@ function App() {
 							<PrivateRoute path="/client/:id" component={Client} />
 							<Route path="/login" component={Login} />
 							<Route path="/load" component={Loading} />
+							<Route path="/newClient" component={NewClient} />
 							<PrivateRoute path="/register" component={Register} />
 							<PrivateRoute path="/test" component={Test} />
 						</Switch>
