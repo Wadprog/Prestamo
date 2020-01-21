@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 
-const NewClient = ({closeModals}) => {
+import { connect } from 'react-redux'
+import {registerClient} from '../redux/actions/profile'
+
+const NewClient = ({registerClient}) => {
 	const [ formData, setFormData ] = useState({ name: '', cedula: '', address: '', addressRef: '', tel: '' });
 	const handleChange = e => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
  };
-
+const handleSubmit=e=>{
+	e.preventDefault()
+	console.log(formData)
+	registerClient(formData);
+}
 	const { name, cedula, address, addressRef, tel } = formData;
 	return (
 		
@@ -13,7 +20,9 @@ const NewClient = ({closeModals}) => {
 				<div className="card">
 					<div className="card-header">Crear nuevo cliente</div>
 					<div className="card-body">
-						<form>
+						<form
+						onSubmit={handleSubmit}
+						>
 							<div className="Form-group">
 								<label>Nombre</label>
 								<input
@@ -65,7 +74,8 @@ const NewClient = ({closeModals}) => {
 								/>
 							</div>
 							<div className="mt-3">
-								<button className="btn btn-block btn-outline-info">Nuevo Cliente</button>
+								<button 
+								className="btn btn-block btn-outline-info"> Crear Nuevo Cliente</button>
 							</div>
 						</form>
 					</div>
@@ -74,4 +84,6 @@ const NewClient = ({closeModals}) => {
 		
 	);
 };
-export default NewClient;
+
+
+export default connect(null,{registerClient})(NewClient);
