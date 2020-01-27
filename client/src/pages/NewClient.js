@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import {registerClient} from '../redux/actions/profile'
 
-const NewClient = ({registerClient}) => {
+const NewClient = ({registerClient, isLoading}) => {
 	const [ formData, setFormData ] = useState({ name: '', cedula: '', address: '', addressRef: '', tel: '' });
 	const handleChange = e => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -85,5 +85,11 @@ const handleSubmit=e=>{
 	);
 };
 
+NewClient.propTypes = {
+	
+  }
+  const mapStateToProps = state => ({
 
-export default connect(null,{registerClient})(NewClient);
+	isLoading: state.profile.isLoading
+  })
+export default connect(mapStateToProps,{registerClient})(NewClient);

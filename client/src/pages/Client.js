@@ -16,6 +16,9 @@ const Client = ({
   const clientLoans = loans.filter(loan => loan.client === id)
   const paidLoans = clientLoans.filter(loan => loan.paidStatus)
   const [unpaidLoan] = clientLoans.filter(loan => !loan.paidStatus)
+
+ 
+  
   const [pageState, setPageState] = useState({
     modifyProfile: false,
     newPayment: false,

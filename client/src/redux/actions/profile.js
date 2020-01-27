@@ -41,7 +41,10 @@ export const registerClient = (formData) => async dispatch => {
 	try {
     const res = await axios.post('api/profile', body, config)
     dispatch(setAlert("Success", 'success'))
-    dispatch(loadProfiles());
+    dispatch({
+		type:PROFILE_FETCH_SUCCESS, 
+		payload:res.data
+	});
     
      
 	} catch (error) {
