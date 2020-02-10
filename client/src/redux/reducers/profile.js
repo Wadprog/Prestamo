@@ -1,4 +1,5 @@
 import {
+  PROFILE_SAVE_SUCCESS,
   PROFILE_FETCH_REQUEST,
   PROFILE_FETCH_SUCCESS,
   PROFILE_FETCH_FAIL,
@@ -24,6 +25,16 @@ export default function(state = initialState, action) {
         profiles: payload,
         filteredProfiles: payload
       }
+      
+      case PROFILE_SAVE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        ...state.filteredProfiles,payload,
+        ...state.profiles, payload
+        
+      }
+      
     case PROFILE_FETCH_FAIL:
       return {
         isLoading: false,

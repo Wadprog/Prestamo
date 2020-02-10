@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {Redirect} from 'react-router-dom'
 import { PROFILE_FETCH_REQUEST, PROFILE_FETCH_SUCCESS, PROFILE_FETCH_FAIL, FILTER, PROFILE_SAVE_REQUEST, PROFILE_SAVE_SUCCESS, PROFILE_SAVE_FAIL, } from './Const';
 
 import {setAlert} from './alert'
@@ -39,22 +40,22 @@ export const registerClient = (formData) => async dispatch => {
 		type: PROFILE_SAVE_REQUEST
 	});
 	try {
-    const res = await axios.post('api/profile', body, config)
+				const res = await axios.post('api/profile', body, config)
+				dispatch({type:PROFILE_SAVE_SUCCESS})
     dispatch(setAlert("Success", 'success'))
-    dispatch(loadProfiles());
+				dispatch(loadProfiles());
+				
     
      
 	} catch (error) {
-    
-    console.log(error.response.data); 
-    const errors = error.response.data.errors
-    if (errors) {
-      errors.forEach(err => dispatch(setAlert(err.msg, 'danger')))
-    }
-    dispatch({
-      type: PROFILE_SAVE_FAIL
-    })
+  
+				const errors = error.response.data.errors;
+			
+				if (errors) 
+		{
+  errors.forEach( err=> dispatch(setAlert(err.msg, 'danger')))
+    dispatch({type: PROFILE_SAVE_FAIL})
 	}
-};
+}}
 
 

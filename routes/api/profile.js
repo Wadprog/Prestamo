@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
 })
 
 //@route Post  api/profile/
-//@desc Create or update a profile for a client
+//@desc Create a profile for a client
 // @access private
 
 router.post(
@@ -58,7 +58,7 @@ router.post(
 
       let client = await Profile.findOne({ cedula })
       if (client)
-        return res.status(400).json({ msg: 'Usuario con este cedula existe' })
+        return res.status(400).json({ errors: [{msg:'Usuario con este cedula existe'}] })
       client = new Profile({
         name,
         cedula,
@@ -72,6 +72,65 @@ router.post(
     } catch (error) {
       console.log(`Server error`)
       res.status(400).send('Could not save user')
+    }
+  }
+)
+
+
+
+
+//@route Put  api/profile/
+//@desc Create a profile for a client
+// @access private
+
+router.put(
+  '/:id',
+  [
+    auth,
+    [
+      check('name', 'Se necesita un nombre')
+        .not()
+        .isEmpty(),
+      check('address', 'Se necesita una dirreccion')
+        .not()
+        .isEmpty(),
+      check('addressRef', 'Se necesita un referencia')
+        .not()
+        .isEmpty(),
+      check('tel', 'Se necesita un numero de telefono')
+        .not()
+        .isEmpty(),
+      check('cedula', 'Se necesita un numero cedula')
+        .not()
+        .isEmpty()
+    ]
+  ],
+  async (req, res) => {
+    const errors = validationResult(req)
+    if (!errors.isEmpty())
+      return res.status(400).json({ errors: errors.array() })
+
+    try {
+      const {_id, name,cedula,address,addressRef,comment,tel} = req.body
+
+      let client = await Profile.findOne({ _id })
+      if (!client)
+        return res.status(400).json({ errors: [{msg:'Este cliente no existe'}] })
+        client.update({
+        name,
+        cedula,
+        address,
+        addressRef,
+        comment,
+        tel
+   })
+      
+      await client.save()
+      return res.json(client)
+    } catch (error) {
+      console.log(`Server error`)
+      res.status(400).json({ errors: [{msg:'Could not save Profile Server error'}] })
+     
     }
   }
 )
