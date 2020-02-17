@@ -39,8 +39,7 @@ const Client2 = ({ addLoan, profiles, loans, loanLoading, match: { params: { id 
 	};
 	const addNewLoan = async formData => {
 		await closeModals();
-		startLoading();
-		addLoan(formData);
+		addLoan(formData);  
 	};
 	return (
 		<Fragment>

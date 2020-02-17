@@ -10,7 +10,8 @@ table {
 th { 
 	background: #3498db; 
 	color: white; 
-	font-weight: bold; 
+ font-weight: bold; 
+ transition: all 200ms;
 	}
 .hide{
  display: none;
