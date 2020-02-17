@@ -3,7 +3,7 @@ import Navbar from './component/Navbar';
 import Footer from './component/Footer';
 import Home from './pages/Home';
 import Clients from './pages/Clients';
-import Client from './pages/Client';
+import Client from './pages/Client2';
 import Alert from './component/Alert';
 import Test from './component/Test';
 import Login from './pages/Login';

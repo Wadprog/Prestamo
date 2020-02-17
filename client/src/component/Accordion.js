@@ -2,26 +2,7 @@ import React, { Component } from 'react'
 import './Accordion.css'
 
 class Accordion extends Component {
-  static defaultProps = {
-    amount: 10000,
-    description:
-      'Go all around the house use use Go all around the house use use Go all around the house use use Go all around the house use use Go all around the house use use Go all around the house use useGo all around the house use useGo all around the house use useGo all around the house use useGo all around the house use useGo all around the house use useGo all around the house use useGo all around the house use useGo all around the house use useGo all around the house use use',
-    paidStatus: false,
-    dues: [
-      {
-        id: 1,
-        date: '9/10/2019',
-        amount: 500,
-        collector: 'El negro'
-      },
-      {
-        id: 2,
-        date: '9/11/2019',
-        amount: 500,
-        collector: 'El negro'
-      }
-    ]
-  }
+ 
   constructor(props) {
     super(props)
     this.state = {
@@ -33,8 +14,8 @@ class Accordion extends Component {
   }
 
   nextPayment() {
-    const { paidStatus, dues } = this.props
-    if (paidStatus) return `Ultimo pago: ${dues[dues.length - 1].date}`
+    //const { paidStatus, dues } = this.props
+    //if (paidStatus) return `Ultimo pago: ${dues[dues.length - 1].date}`
     return `Calculando...`
   }
   handleOpen(evt) {
@@ -50,7 +31,7 @@ class Accordion extends Component {
 
   render() {
     const { Fragment } = React
-    const { amount, dues } = this.props
+    const { amount, dues,status } = this.props
     return (
       <div className={` d-block Accordion ${this.state.isOpened && 'is-open'}`}>
         <div className="Accordion-header">

@@ -16,6 +16,27 @@ const LoanSchema = mongoose.Schema({
 		type: Boolean,
 		default: false
 	},
+	status: {
+		type: String,
+		default: "unpaid"
+	},
+	previousDebt:[
+	{
+		id: {
+			type: mongoose.Schema.Types.ObjectId,
+		ref: 'Loan'
+		},
+			amount: {
+				type:Number, 
+				required:true
+			},
+			date: {
+				type:Date, 
+				required:true
+			}
+	}
+	], 
+
 	dues: [
 		{
 			date: {
