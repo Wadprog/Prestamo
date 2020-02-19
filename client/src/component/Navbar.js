@@ -44,9 +44,9 @@ const Navbar = ({ isAuthenticated, logout }) => {
     </ul>
   )
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-navColor mb-0 fixed-top">
+    <nav className="navbar navbar-expand-md navbar-light bg-light mb-0 fixed-top">
       <div className="container">
-        <Link className="navbar-brand bg-logo px-5" to="/">
+        <Link className="navbar-brand bg-light px-5" to="/">
           <img className="Logo" alt="Logo" src={Logo} />
         </Link>
         <button

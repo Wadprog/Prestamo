@@ -11,7 +11,7 @@ import NewLoan from '../component/Modals/NewLoan';
 
 import ExpandableRow from '../component/layout/ExpandableRow'
 import './Client2.css'
-const Client2 = ({ addLoan, profiles, loans, loanLoading, match: { params: { id } } }) => {
+const Client2 = ({ addLoan, profiles, loans, loanLoading, profileLoading, authLoading, match: { params: { id } } }) => {
 
 	const [ client ] = profiles.filter(profile => profile._id === id);
  const clientLoans = loans.filter(loan => loan.client === id);
@@ -26,9 +26,7 @@ const Client2 = ({ addLoan, profiles, loans, loanLoading, match: { params: { id 
  });
  
 
-	const startLoading = () => {
-		setPageState({ ...pageState, loading: true });
-	};
+	
 	const { loading, modifyProfile, newPayment, newLoan } = pageState;
 	const { Fragment } = React;
 	const setPage = e => {
@@ -39,11 +37,18 @@ const Client2 = ({ addLoan, profiles, loans, loanLoading, match: { params: { id 
 	};
 	const addNewLoan = async formData => {
 		await closeModals();
+		if(unpaidLoan != null){
+		if(window.confirm("Este cliente tiene deuda pendiente se cancelara y el monto sera agregado a este"))
 		addLoan(formData);  
+		} else {
+			addLoan(formData); 
+		}
 	};
 	return (
+		
 		<Fragment>
-			{loanLoading && <Loading />}
+			{loanLoading || profileLoading || authLoading ? <Loading /> :
+			<Fragment>
 			{modifyProfile && <ModifyProfile id={id} closeModals={closeModals} />}
 			{newLoan && <NewLoan id={id} closeModals={closeModals} addNewLoan={addNewLoan} />}
 
@@ -130,16 +135,22 @@ const Client2 = ({ addLoan, profiles, loans, loanLoading, match: { params: { id 
 				)}
 			</div>
 		</Fragment>
+}
+		</Fragment>
 	);
 };
 Client2.prototype = {
 	profiles: PropTypes.array.isRequired,
 	loans: PropTypes.array.isRequired,
-	loanLoading: PropTypes.bool.isRequired
+	loanLoading: PropTypes.bool.isRequired,
+	profileLoading: PropTypes.bool.isRequired,
+	authLoading:PropTypes.bool.isRequired,
 };
 const mapStateToProps = state => ({
 	profiles: state.profile.profiles,
 	loans: state.loan.loans,
-	loanLoading: state.loan.loading
+	loanLoading: state.loan.loading,
+	profileLoading:state.profile.isLoading, 
+	authLoading: state.auth.loading
 });
 export default connect(mapStateToProps, { loadLoans, addLoan })(Client2);
