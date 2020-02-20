@@ -7,7 +7,7 @@ import Client from './pages/Client2';
 import Alert from './component/Alert';
 import Test from './component/Test';
 import Login from './pages/Login';
-import Loading from './component/layout/Loading2'
+import Loading from './component/layout/Loading'
 import Register from './pages/Register';
 
 import NewClient from './pages/NewClient'

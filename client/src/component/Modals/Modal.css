@@ -1,18 +1,17 @@
 .Modal-wrapper {
   background-color: rgba(0, 0, 0, 0.5);
-
   height: 100vw;
   width: 100vw;
-  position: absolute;
+  position: fixed;
   top: 0;
-
+  left: 0px;
   z-index: 90;
 }
 .Modal {
   position: absolute;
-  top: 50%;
+  top: 110px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
 }
 .Modal-close-btn {
   background-color: white;
@@ -24,8 +23,8 @@
   top: -30px;
   right: -10px;
   line-height: 20px;
-  font-weight:bold;
+  font-weight: bold;
 }
 .Modal-close-btn:hover {
-    transform:scale(1.2,1.2);
+  transform: scale(1.2, 1.2);
 }

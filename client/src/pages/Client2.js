@@ -4,7 +4,7 @@ import { loadLoans, addLoan } from '../redux/actions/loans';
 
 import { connect } from 'react-redux';
 import Accordion from '../component/Accordion';
-import Loading from '../component/layout/Loading2';
+import Loading from '../component/layout/Loading';
 import ModifyProfile from '../component/Modals/ModifyProfile';
 import NewLoan from '../component/Modals/NewLoan';
 
