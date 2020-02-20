@@ -54,6 +54,7 @@ const Clients = ({
               <span className="col-md-4 text-white h4 pt-2" />
               <div className="col-md-4 offset-md-4 ">
                 <div className="input-group mb-3">
+                
                   <input
                     onChange={handleChange}
                     placeholder="Buscar ..."
