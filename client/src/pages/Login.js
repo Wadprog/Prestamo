@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import {Redirect }from 'react-router'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { login } from '../redux/actions/auth'
+import Loading from '../component/layout/Loading'
 
-const LOGIN = ({ isAuthenticated ,login}) => {
+const LOGIN = ({ isAuthenticated,authLoading,login}) => {
   const [formData, setFormData] = useState({
     name: '',
     password: ''
@@ -21,6 +22,10 @@ const LOGIN = ({ isAuthenticated ,login}) => {
   if (isAuthenticated) return <Redirect to="/" />
 
   return (
+    <Fragment>
+      {
+        authLoading?<Loading/>:
+      
     <div className="h-100 container-fluid">
       <div className="centered-box  d-flex justify-content-center align-items-center">
         <div className="small-box rounded px-3 py-5 mb-5 bg-white h-75 w-100 ">
@@ -64,12 +69,17 @@ const LOGIN = ({ isAuthenticated ,login}) => {
         </div>
       </div>
     </div>
+    }
+    </Fragment>
   )
 }
 LOGIN.prototype = {
-  isAuthenticated: PropTypes.object.isRequired
+  isAuthenticated: PropTypes.object.isRequired,
+  authLoading:PropTypes.bool.isRequired
 }
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  authLoading: state.auth.loading
+  
 })
 export default connect(mapStateToProps, { login })(LOGIN)

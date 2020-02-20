@@ -127,13 +127,17 @@ const Client = ({ addLoan ,profiles, loans, loanLoading, match: { params: { id }
 	);
 };
 Client.prototype = {
-	profiles: PropTypes.array.isRequired,
+  profiles: PropTypes.array.isRequired,
   loans: PropTypes.array.isRequired,
-  loanLoading: PropTypes.bool.isRequired
+  loanLoading: PropTypes.bool.isRequired,
+ profileLoading: PropTypes.bool.isRequired,
+ authLoading:PropTypes.bool.isRequired,
 };
 const mapStateToProps = state => ({
 	profiles: state.profile.profiles,
   loans: state.loan.loans, 
-  loanLoading:state.loan.loading
+  loanLoading:state.loan.loading,
+  profileLoading:state.profile.isLoading, 
+	authLoading: state.auth.loading
 });
 export default connect(mapStateToProps, { loadLoans, addLoan })(Client);
